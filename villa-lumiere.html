@@ -1,163 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Villa Lumière — Innovstudio Paris</title>
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Villa Lumière — Innovstudio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
-  :root{--sky:#E8F2FB;--sky-deep:#D6E8F8;--white:#FFFFFF;--ink:#14202C;--ink-soft:#56697D;--orange:#E85D2C;--orange-deep:#C84A1E;--green:#2E9E5B;--footer-ink:#101A24;--footer-text:#C7D6E5;--radius:10px;--maxw:1280px;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--sky);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-  a{color:inherit;text-decoration:none;}
-  img{display:block;max-width:100%;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 48px;}
-  h1,h2,h3{font-family:'Space Grotesk',sans-serif;color:var(--ink);line-height:1.05;}
-  header.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(232,242,251,0.88);backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,32,44,0.08);}
-  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;}
-  .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;}
-  .logo-mark{width:22px;height:22px;border-radius:50%;border:2px solid var(--orange);position:relative;flex-shrink:0;}
-  .logo-mark::after{content:'';position:absolute;top:50%;left:50%;width:1.5px;height:14px;background:var(--orange);transform:translate(-50%,-50%);}
-  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:0.92rem;padding:13px 26px;border-radius:var(--radius);border:1.5px solid transparent;cursor:pointer;transition:transform .25s,background .25s,color .25s;white-space:nowrap;}
-  .btn-primary{background:var(--orange);color:#fff;}
-  .btn-primary:hover{background:var(--orange-deep);transform:translateY(-2px);}
-  .eyebrow{display:flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:0.14em;font-size:0.78rem;font-weight:600;color:var(--ink-soft);margin-bottom:18px;}
-  .eyebrow .oculus{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--orange);flex-shrink:0;}
-  .framed{position:relative;}
-  .corner{position:absolute;width:16px;height:16px;pointer-events:none;z-index:2;}
-  .corner::before,.corner::after{content:'';position:absolute;background:var(--orange);}
-  .corner::before{width:16px;height:1.5px;top:50%;left:0;transform:translateY(-50%);}
-  .corner::after{width:1.5px;height:16px;left:50%;top:0;transform:translateX(-50%);}
-  .corner.tl{top:14px;left:14px;}.corner.tr{top:14px;right:14px;}
-  .corner.bl{bottom:14px;left:14px;}.corner.br{bottom:14px;right:14px;}
-  .breadcrumb{padding:112px 0 0;}
-  .back-link{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:0.9rem;color:var(--ink-soft);transition:color .2s;}
-  .back-link:hover{color:var(--orange);}
-  .back-link svg{transition:transform .2s;}
-  .back-link:hover svg{transform:translateX(-4px);}
-  .project-hero{padding:32px 0 80px;}
-  .project-hero h1{font-size:clamp(2.4rem,6vw,5rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:20px;}
-  .project-hero .tagline{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.05rem,2vw,1.35rem);color:var(--ink-soft);max-width:640px;line-height:1.6;margin-bottom:40px;}
-  .meta-row{display:flex;gap:48px;flex-wrap:wrap;padding:28px 0;border-top:1px solid rgba(20,32,44,0.1);border-bottom:1px solid rgba(20,32,44,0.1);margin-bottom:56px;}
-  .meta-item{display:flex;flex-direction:column;gap:5px;}
-  .meta-item span:first-child{font-size:0.76rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-soft);}
-  .meta-item span:last-child{font-size:1rem;font-weight:600;color:var(--ink);}
-  .hero-img{border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(20,32,44,0.25);margin-bottom:80px;}
-  .hero-img img{width:100%;height:clamp(320px,52vw,580px);object-fit:cover;}
-  .content-grid{display:grid;grid-template-columns:1fr 0.42fr;gap:80px;margin-bottom:100px;align-items:start;}
-  .content-main h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;margin-bottom:20px;}
-  .content-main p{color:var(--ink-soft);font-size:1.02rem;line-height:1.75;margin-bottom:18px;}
-  .content-side{background:var(--white);border-radius:14px;padding:32px;box-shadow:0 8px 24px -8px rgba(20,32,44,0.1);}
-  .content-side h3{font-size:1rem;font-weight:600;margin-bottom:18px;}
-  .detail-list{display:flex;flex-direction:column;gap:14px;}
-  .detail-list li{display:flex;flex-direction:column;gap:3px;border-bottom:1px solid rgba(20,32,44,0.07);padding-bottom:12px;list-style:none;}
-  .detail-list li:last-child{border-bottom:none;padding-bottom:0;}
-  .detail-list .label{font-size:0.74rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-soft);}
-  .detail-list .value{font-size:0.95rem;font-weight:500;color:var(--ink);}
-  .gallery{margin-bottom:100px;}
-  .gallery h2{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:600;margin-bottom:36px;}
-  .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-  .gallery-grid .framed{border-radius:14px;overflow:hidden;}
-  .gallery-grid img{width:100%;height:clamp(220px,30vw,360px);object-fit:cover;transition:transform .6s;}
-  .gallery-grid .framed:hover img{transform:scale(1.04);}
-  .gallery-grid .framed:first-child{grid-column:1/-1;}
-  .gallery-grid .framed:first-child img{height:clamp(280px,40vw,480px);}
-  .project-cta{background:var(--footer-ink);border-radius:20px;padding:72px 64px;text-align:center;margin-bottom:100px;}
-  .project-cta h2{color:#fff;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;margin-bottom:16px;}
-  .project-cta p{color:var(--footer-text);font-size:1.02rem;max-width:460px;margin:0 auto 32px;line-height:1.6;}
-  footer{background:var(--footer-ink);color:var(--footer-text);padding:60px 0 0;}
-  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:28px 0;font-size:0.84rem;color:rgba(199,214,229,0.55);border-top:1px solid rgba(199,214,229,0.1);flex-wrap:wrap;gap:12px;}
-  .footer-bottom a{color:rgba(199,214,229,0.75);font-weight:500;}
-  .footer-bottom a:hover{color:var(--orange);}
-  @media(max-width:860px){
-    .wrap,.nav-inner{padding-left:24px;padding-right:24px;}
-    .content-grid{grid-template-columns:1fr;gap:40px;}
-    .gallery-grid{grid-template-columns:1fr;}
-    .gallery-grid .framed:first-child{grid-column:auto;}
-    .project-cta{padding:48px 28px;}
-    .meta-row{gap:28px;}
-  }
+:root{
+  --black:#050505; --black2:#0d0d0d; --soft:#151515;
+  --gold:#c9a24a; --gold2:#e0c16c; --cream:#f7f2e8;
+  --white:#fff; --gray:#bdbdbd; --maxw:1280px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:#050505;color:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit} img{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:auto;padding:0 48px}
+::selection{background:var(--gold);color:#000}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:700;line-height:1}
+p{line-height:1.8;color:var(--gray)}
+.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:.22em;font-size:.78rem;font-weight:700;margin-bottom:22px}
+.btn{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--gold);padding:15px 28px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.82rem;transition:.3s;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#080808}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(201,162,74,.25)}
+.btn-outline{background:transparent;color:var(--gold)}
+.btn-outline:hover{background:var(--gold);color:#000}
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,5,5,.84);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,162,74,.2)}
+.nav-inner{max-width:var(--maxw);margin:auto;padding:22px 48px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:14px;font-weight:800;letter-spacing:.06em;font-size:1.25rem}
+.logo-mark{width:34px;height:34px;border:2px solid var(--gold);position:relative}
+.logo-mark:before{content:"";position:absolute;inset:7px;border-left:2px solid var(--gold);border-right:2px solid var(--gold)}
+.logo small{display:block;font-size:.48rem;color:var(--gold);letter-spacing:.28em;margin-top:3px}
+.nav-links{display:flex;gap:38px;font-size:.82rem;text-transform:uppercase;font-weight:600}
+.nav-links a{color:#eee;transition:.25s}.nav-links a:hover{color:var(--gold)}
+.nav-cta{display:flex;align-items:center;gap:18px}
+.burger{display:none;background:none;border:0;width:38px;cursor:pointer}.burger span{display:block;height:2px;background:var(--gold);margin:7px 0}
+.mobile-menu{display:none;background:#080808;border-top:1px solid rgba(201,162,74,.2)}
+.mobile-menu a{display:block;padding:16px 32px;border-bottom:1px solid rgba(255,255,255,.06)}
+.mobile-menu.open{display:block}
+.hero{min-height:100vh;padding:165px 0 80px;position:relative}
+.hero-content{max-width:780px}
+.wordmark{font-size:clamp(4rem,11vw,9rem);line-height:.85;letter-spacing:-.04em;margin-bottom:28px}
+.wordmark span{color:var(--gold)}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);color:var(--cream);max-width:680px;margin-bottom:22px}
+.hero-sub{max-width:590px;font-size:1.02rem;margin-bottom:42px}
+.hero-actions{display:flex;gap:22px;flex-wrap:wrap}
+.hero-bottom{margin-top:90px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(201,162,74,.22);background:rgba(0,0,0,.55)}
+.feature{padding:32px;border-right:1px solid rgba(201,162,74,.18)}.feature:last-child{border-right:0}
+.feature h3{font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.95rem;color:#fff;margin-bottom:10px}
+.feature p{font-size:.85rem}
+section{padding:110px 0}
+.light{background:var(--cream);color:#111}.light p{color:#444}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:55px}.section-head p{max-width:420px}
+.section-head h2,.light h2,.contact h2{font-size:clamp(2.4rem,5vw,4.5rem)}
+.grid-2{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.card{background:#111;border:1px solid rgba(201,162,74,.18);overflow:hidden;transition:.35s}
+.card:hover{transform:translateY(-8px);border-color:var(--gold)}
+.card img{height:380px;width:100%;object-fit:cover;filter:saturate(.9) contrast(1.08);transition:.5s}.card:hover img{transform:scale(1.05)}
+.card-info{padding:26px}.card-info h3{font-size:1.8rem;color:#fff;margin-bottom:8px}
+.detail{color:var(--gold);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px}
+.stats{display:flex;gap:35px;margin-top:35px;border-top:1px solid rgba(0,0,0,.12);padding-top:30px}
+.stat strong{display:block;font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:3rem}.stat span{color:#333;font-size:.83rem;font-weight:700}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,162,74,.25);border:1px solid rgba(201,162,74,.25)}
+.service-item{background:#090909;padding:42px 30px}.service-number{color:var(--gold);font-weight:800;margin-bottom:25px}
+.service-item h3{font-family:'Montserrat',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.gallery{display:grid;grid-template-columns:2fr 1fr;gap:24px}.gallery img{width:100%;height:360px;object-fit:cover;border:1px solid rgba(201,162,74,.18)}.gallery img:first-child{height:744px}
+.project-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;border-top:1px solid rgba(201,162,74,.22);border-bottom:1px solid rgba(201,162,74,.22);padding:32px 0;margin-top:55px}
+.project-meta span{display:block;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;font-size:.75rem;font-weight:700;margin-bottom:8px}
+.project-meta strong{font-size:1.05rem}
+.contact{background:var(--cream);color:#111;padding-bottom:0}.contact p{color:#444}.footer-top{max-width:760px;margin-bottom:70px}
+.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:35px;padding:45px 0;border-top:1px solid rgba(0,0,0,.12);border-bottom:1px solid rgba(0,0,0,.12)}
+.footer-col h4{color:var(--gold);text-transform:uppercase;letter-spacing:.15em;font-size:.78rem;margin-bottom:16px}
+.footer-col a,.footer-col p{color:#111;display:block;margin-bottom:10px;font-weight:600}.footer-bottom{padding:25px 0;display:flex;justify-content:space-between;color:#555;font-size:.85rem}
+.modal-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:.3s}
+.modal-overlay.open{opacity:1;visibility:visible}.modal{max-width:660px;width:100%;background:#0c0c0c;border:1px solid var(--gold);padding:42px;color:#fff;max-height:90vh;overflow:auto}
+.modal-close{float:right;background:transparent;border:1px solid var(--gold);color:var(--gold);width:36px;height:36px;cursor:pointer}
+.project-form{display:grid;gap:18px;margin-top:24px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gold)}
+input,select,textarea{width:100%;padding:13px;background:#151515;border:1px solid rgba(201,162,74,.35);color:#fff;margin-top:7px;font-family:'Montserrat',sans-serif}textarea{min-height:100px}
+.reveal{opacity:0;transform:translateY(26px);transition:.8s}.reveal.in{opacity:1;transform:translateY(0)}
+@media(max-width:980px){.wrap,.nav-inner{padding-left:28px;padding-right:28px}.nav-links{display:none}.burger{display:block}.nav-cta .btn{display:none}.hero-bottom,.service-grid,.grid-3{grid-template-columns:1fr 1fr}.grid-2{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.gallery img:first-child{height:390px}.project-meta{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.hero{padding-top:135px}.wordmark{font-size:4rem}.hero-bottom,.grid-3,.service-grid,.footer-cols,.form-row,.project-meta{grid-template-columns:1fr}.feature{border-right:0;border-bottom:1px solid rgba(201,162,74,.18)}.section-head{display:block}.stats{flex-wrap:wrap}.footer-bottom{display:block}}
 </style>
-</head>
-<body>
-
-<header class="nav">
+</head><body>
+<header>
   <div class="nav-inner">
-    <a href="index.html" class="logo"><span class="logo-mark"></span>INNOVSTUDIO</a>
-    <a href="index.html#contact" class="btn btn-primary">Request a Quote</a>
+    <a href="index.html#top" class="logo"><span class="logo-mark"></span><span>INNOVSTUDIO<small>ARCHITECTURE & DESIGN</small></span></a>
+    <nav class="nav-links">
+      <a href="index.html#top">Accueil</a><a href="index.html#studio">Studio</a><a href="index.html#projects">Projets</a><a href="index.html#services">Services</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta"><button class="btn btn-outline openProjectModal">Demander un devis →</button><button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#top">Accueil</a><a href="index.html#studio">Studio</a><a href="index.html#projects">Projets</a><a href="index.html#services">Services</a><a href="#contact">Contact</a>
   </div>
 </header>
 
-<main>
-  <div class="breadcrumb wrap">
-    <a href="index.html" class="back-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Back to projects</a>
-  </div>
-
-  <section class="project-hero wrap">
-    <div class="eyebrow"><span class="oculus"></span> Residential Architecture &nbsp;·&nbsp; Saint-Germain, Paris</div>
-    <h1>Villa Lumière</h1>
-    <p class="tagline">A glass-walled family home built around a sculptural staircase and a private courtyard flooded with southern light.</p>
-    <div class="meta-row">
-      <div class="meta-item"><span>Type</span><span>Private Residence</span></div>
-      <div class="meta-item"><span>Location</span><span>Saint-Germain, Paris</span></div>
-      <div class="meta-item"><span>Year</span><span>2025</span></div>
-      <div class="meta-item"><span>Surface</span><span>380 m²</span></div>
-      <div class="meta-item"><span>Status</span><span>Completed</span></div>
-    </div>
-    <div class="hero-img framed">
-      <span class="corner tl"></span><span class="corner tr"></span>
-      <span class="corner bl"></span><span class="corner br"></span>
-      <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1800&auto=format&fit=crop" alt="Villa Lumière — main view">
-    </div>
-  </section>
-
-  <section class="wrap">
-    <div class="content-grid">
-      <div class="content-main">
-        <h2>Light as the primary material.</h2>
-        <p>Villa Lumière was designed around a single obsession: maximising the quality of light at every hour of the day. The south-facing plot in Saint-Germain allowed us to orient the main living spaces along a glazed spine that tracks the arc of the sun from morning kitchen to evening salon.</p>
-        <p>The structural heart of the home is a floating concrete staircase that rises three floors through a double-height void. It doubles as a light shaft, drawing daylight from a rooflight above down into the lower levels. Around it, rooms open and close through pivoting panels rather than conventional doors.</p>
-        <p>Materials were kept deliberately quiet — raw linen plaster, honed limestone floors, and black steel frames — so that the changing light becomes the decoration. The private courtyard garden brings greenery and birdsong to the heart of the plan.</p>
-      </div>
-      <aside class="content-side">
-        <h3>Project Details</h3>
-        <ul class="detail-list">
-          <li><span class="label">Client</span><span class="value">Private family</span></li>
-          <li><span class="label">Architect</span><span class="value">Innovstudio</span></li>
-          <li><span class="label">Structure</span><span class="value">Reinforced concrete</span></li>
-          <li><span class="label">Materials</span><span class="value">Limestone, linen plaster, steel</span></li>
-          <li><span class="label">Budget</span><span class="value">800 000 – 1 200 000 €</span></li>
-          <li><span class="label">Duration</span><span class="value">26 months</span></li>
-        </ul>
-      </aside>
-    </div>
-
-    <div class="gallery">
-      <h2>Gallery</h2>
-      <div class="gallery-grid">
-        <div class="framed"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1200&auto=format&fit=crop" alt="Villa Lumière — interior"></div>
-        <div class="framed"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1200&auto=format&fit=crop" alt="Villa Lumière — detail"></div>
-        <div class="framed"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop" alt="Villa Lumière — exterior"></div>
-      </div>
-    </div>
-
-    <div class="project-cta">
-      <h2>Un projet similaire en tête ?</h2>
-      <p>Parlons de votre espace, votre terrain et vos ambitions — nous prendrons le relai.</p>
-      <a href="index.html#contact" class="btn btn-primary">Démarrer un projet</a>
-    </div>
-  </section>
+<main id="top">
+<section class="hero" style="background:linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.74) 45%,rgba(0,0,0,.32)),url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?q=80&w=1800&auto=format&fit=crop') center/cover;">
+ <div class="wrap hero-content reveal"><a href="index.html#projects" class="btn btn-outline" style="margin-bottom:38px;">← Retour aux projets</a><div class="eyebrow">Résidentiel · Saint-Germain, Paris</div><h1 class="wordmark">Villa Lumière</h1><p class="hero-tagline">Une résidence contemporaine ouverte sur la lumière, pensée autour d’un escalier sculptural et d’une cour privée.</p><p class="hero-sub">La maison a été imaginée pour offrir une relation permanente entre les espaces intérieurs, le jardin et la lumière naturelle.</p><div class="project-meta"><div><span>Type</span><strong>Résidence privée</strong></div><div><span>Lieu</span><strong>Saint-Germain, Paris</strong></div><div><span>Année</span><strong>2025</strong></div><div><span>Surface</span><strong>380 m²</strong></div></div></div>
+</section>
+<section class="light"><div class="wrap grid-2"><div class="reveal"><div class="eyebrow">Concept</div><h2>Une architecture pensée comme une expérience</h2><p>Chaque ligne, chaque matière et chaque ouverture ont été travaillées pour créer un espace élégant, fluide et durable. Le projet associe esthétique contemporaine, confort quotidien et détails haut de gamme.</p><p>L’objectif était de créer un lieu qui reste sobre, chaleureux et intemporel, avec une attention particulière portée à la lumière naturelle et à la relation entre intérieur et extérieur.</p></div><div class="reveal"><img style="height:520px;width:100%;object-fit:cover;border-radius:18px;box-shadow:0 25px 55px rgba(0,0,0,.22)" src="https://images.unsplash.com/photo-1600566753151-384129cf4e3e?q=80&w=1200&auto=format&fit=crop" alt="Villa Lumière"></div></div></section>
+<section><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Galerie</div><h2>Détails du projet</h2></div><p>Un aperçu visuel de l’ambiance, des volumes et des matières sélectionnées.</p></div><div class="gallery reveal"><img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1400&auto=format&fit=crop" alt="Villa Lumière"><div><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=900&auto=format&fit=crop" alt="Villa Lumière" style="margin-bottom:24px;"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=900&auto=format&fit=crop" alt="Villa Lumière"></div></div></div></section>
+<section class="light"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">Approche</div><h2>Élégance, précision et confort</h2></div><p>Le projet repose sur trois principes : des volumes équilibrés, des matières nobles et une circulation naturelle.</p></div><div class="grid-3"><div class="stat"><strong>01</strong><span>Lumière naturelle maîtrisée</span></div><div class="stat"><strong>02</strong><span>Matières durables et raffinées</span></div><div class="stat"><strong>03</strong><span>Espaces fluides et fonctionnels</span></div></div></div></section>
 </main>
-
-<footer>
+<footer class="contact" id="contact">
   <div class="wrap">
-    <div class="footer-bottom">
-      <span>© 2026 Innovstudio. All rights reserved.</span>
-      <a href="index.html">← Retour à l'accueil</a>
+    <div class="footer-top reveal">
+      <div class="eyebrow">Contact</div>
+      <h2>Parlons de votre futur projet</h2>
+      <p>Décrivez votre espace, votre vision et vos besoins. Notre équipe vous recontactera rapidement.</p>
+      <button type="button" class="btn btn-primary openProjectModal">Démarrer un projet →</button>
     </div>
+    <div class="footer-cols reveal">
+      <div class="footer-col"><h4>Adresse</h4><p>14 Rue des Beaux-Arts<br>75006 Paris, France</p></div>
+      <div class="footer-col"><h4>Contact</h4><a href="mailto:hello@innovstudio.fr">hello@innovstudio.fr</a><a href="tel:+33142968810">+33 1 42 96 88 10</a></div>
+      <div class="footer-col"><h4>Réseaux</h4><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Pinterest</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Innovstudio. Tous droits réservés.</span><a href="#top">Retour en haut ↑</a></div>
   </div>
 </footer>
-</body>
-</html>
+
+<div class="modal-overlay" id="projectModalOverlay" aria-hidden="true">
+  <div class="modal">
+    <button class="modal-close" id="modalCloseBtn" type="button">×</button>
+    <div class="eyebrow">Démarrer un projet</div>
+    <h2>Parlez-nous de votre projet</h2>
+    <p>Remplissez ce formulaire. Notre équipe vous recontactera sous 48h.</p>
+    <form id="projectForm" class="project-form">
+      <div class="form-row"><div><label>Nom complet *</label><input type="text" required placeholder="Jean Dupont"></div><div><label>E-mail *</label><input type="email" required placeholder="jean@email.com"></div></div>
+      <div class="form-row"><div><label>Téléphone *</label><input type="tel" required placeholder="+33 6 12 34 56 78"></div><div><label>Type de projet *</label><select required><option value="">Sélectionnez</option><option>Architecture</option><option>Design d'intérieur</option><option>Rénovation</option><option>Gestion de projet</option></select></div></div>
+      <div><label>Message *</label><textarea required placeholder="Décrivez votre projet..."></textarea></div>
+      <button type="submit" class="btn btn-primary">Envoyer ma demande →</button>
+    </form>
+  </div>
+</div>
+
+<script>
+const burger=document.getElementById('burgerBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+if(burger){burger.addEventListener('click',()=>mobileMenu.classList.toggle('open'));}
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('open')));
+if('IntersectionObserver' in window){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));}
+const overlay=document.getElementById('projectModalOverlay');
+const openBtns=document.querySelectorAll('.openProjectModal');
+const closeBtn=document.getElementById('modalCloseBtn');
+const form=document.getElementById('projectForm');
+openBtns.forEach(btn=>btn.addEventListener('click',()=>{
+  overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+}));
+function closeModal(){overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); document.body.style.overflow='';}
+if(closeBtn) closeBtn.addEventListener('click',closeModal);
+if(overlay) overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape' && overlay.classList.contains('open'))closeModal();});
+if(form){form.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!form.checkValidity()){form.reportValidity();return;}
+  closeModal(); form.reset();
+  Swal.fire({title:"Demande envoyée !",text:"Votre demande a bien été enregistrée. Notre équipe vous recontactera sous 48h.",icon:"success",confirmButtonText:"OK",confirmButtonColor:"#c9a24a",background:"#0c0c0c",color:"#ffffff"});
+});}
+</script>
+</body></html>
