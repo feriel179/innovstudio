@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Atelier Seine — Innovstudio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--black:#050505;--dark:#0b0b0b;--gold:#c9a24a;--gold2:#e0c16c;--cream:#f7f2e8;--gray:#bdbdbd;--white:#fff;--max:1180px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Montserrat,sans-serif;background:var(--black);color:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit} img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:auto;padding:0 32px}
+h1,h2,h3{font-family:"Cormorant Garamond",serif;line-height:1;font-weight:700}
+p{color:var(--gray);line-height:1.75}
+.eyebrow{color:var(--gold);font-size:.78rem;text-transform:uppercase;letter-spacing:.2em;font-weight:800;margin-bottom:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--gold);padding:14px 25px;text-transform:uppercase;font-weight:800;font-size:.8rem;letter-spacing:.04em;cursor:pointer;transition:.3s}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#080808}
+.btn-outline{background:transparent;color:var(--gold)}
+.btn:hover{transform:translateY(-3px)}
+header{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(5,5,5,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,162,74,.22)}
+.nav{max-width:var(--max);margin:auto;padding:19px 32px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.06em}
+.logo-mark{width:32px;height:32px;border:2px solid var(--gold);position:relative}
+.logo-mark:after{content:"";position:absolute;top:7px;bottom:7px;left:13px;border-left:2px solid var(--gold)}
+.logo small{display:block;color:var(--gold);font-size:.46rem;letter-spacing:.25em;margin-top:3px}
+.links{display:flex;gap:34px;text-transform:uppercase;font-size:.8rem;font-weight:800}
+.links a:hover{color:var(--gold)}
+.menu{display:none;border:0;background:transparent;width:38px}.menu span{display:block;height:2px;background:var(--gold);margin:7px 0}
+.mobile{display:none;background:#080808;border-top:1px solid rgba(201,162,74,.2)}.mobile a{display:block;padding:15px 32px;border-bottom:1px solid rgba(255,255,255,.06)}
+.mobile.open{display:block}
+.hero{min-height:100vh;padding:155px 0 80px;background-position:center;background-size:cover;display:flex;align-items:center}
+.hero .content{max-width:760px}
+.word{font-size:clamp(3.7rem,10vw,8rem);letter-spacing:-.04em;margin-bottom:25px}.word span{color:var(--gold)}
+.tag{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,4vw,3rem);color:var(--cream);margin-bottom:20px;max-width:650px}
+.sub{max-width:590px;margin-bottom:35px}
+.actions{display:flex;gap:18px;flex-wrap:wrap}
+.features{margin-top:75px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(201,162,74,.25);background:rgba(0,0,0,.55)}
+.feature{padding:28px;border-right:1px solid rgba(201,162,74,.18)}.feature:last-child{border-right:0}
+.feature h3{font-family:Montserrat,sans-serif;font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+section{padding:95px 0}
+.light{background:var(--cream);color:#111}.light p{color:#444}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:45px}
+.section-head h2,.light h2,.contact h2{font-size:clamp(2.2rem,5vw,4rem)}
+.card{background:#111;border:1px solid rgba(201,162,74,.22);overflow:hidden;transition:.3s}.card:hover{transform:translateY(-7px);border-color:var(--gold)}
+.card img{width:100%;height:350px;object-fit:cover}.card div{padding:24px}.card h3{font-size:1.8rem;margin-bottom:8px}
+.detail{color:var(--gold);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800;margin-bottom:10px}
+.services{background:#070707}.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,162,74,.25);border:1px solid rgba(201,162,74,.25)}
+.service{background:#0b0b0b;padding:36px 24px}.num{color:var(--gold);font-weight:800;margin-bottom:20px}.service h3{font-family:Montserrat,sans-serif;font-size:.95rem;text-transform:uppercase;margin-bottom:12px}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:45px;padding:28px 0;border-top:1px solid rgba(201,162,74,.25);border-bottom:1px solid rgba(201,162,74,.25)}
+.meta span{display:block;color:var(--gold);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800;margin-bottom:7px}.meta strong{font-size:1rem}
+.gallery{display:grid;grid-template-columns:2fr 1fr;gap:20px}.gallery img{height:330px;width:100%;object-fit:cover;border:1px solid rgba(201,162,74,.2)}.gallery .big{height:680px}
+.contact{background:var(--cream);color:#111;padding-bottom:0}.contact p{color:#444}.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;padding:40px 0;border-top:1px solid rgba(0,0,0,.14);border-bottom:1px solid rgba(0,0,0,.14);margin-top:55px}
+.footer-cols h4{color:var(--gold);text-transform:uppercase;letter-spacing:.13em;font-size:.78rem;margin-bottom:12px}.footer-cols a,.footer-cols p{color:#111;font-weight:600}
+.footer-bottom{display:flex;justify-content:space-between;padding:22px 0;color:#555;font-size:.85rem}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;z-index:200;padding:20px}.modal.open{display:flex}
+.box{background:#0b0b0b;border:1px solid var(--gold);padding:35px;max-width:620px;width:100%}.close{float:right;background:none;border:1px solid var(--gold);color:var(--gold);width:34px;height:34px}
+form{display:grid;gap:15px;margin-top:20px}.row{display:grid;grid-template-columns:1fr 1fr;gap:15px}label{color:var(--gold);font-size:.75rem;text-transform:uppercase;font-weight:800}input,textarea,select{width:100%;margin-top:7px;padding:12px;background:#151515;color:#fff;border:1px solid rgba(201,162,74,.4)}
+textarea{min-height:90px}
+@media(max-width:900px){.links,.nav .btn{display:none}.menu{display:block}.grid2,.grid3,.service-grid{grid-template-columns:1fr 1fr}.features{grid-template-columns:1fr 1fr}.meta{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr}.gallery .big{height:360px}}
+@media(max-width:620px){.wrap,.nav{padding-left:22px;padding-right:22px}.hero{padding-top:125px}.word{font-size:3.5rem}.features,.grid2,.grid3,.service-grid,.footer-cols,.row,.meta{grid-template-columns:1fr}.feature{border-right:0;border-bottom:1px solid rgba(201,162,74,.18)}.section-head{display:block}.footer-bottom{display:block}.card img{height:280px}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head><body>
+<header>
+<div class="nav">
+<a class="logo" href="index.html#top"><span class="logo-mark"></span><span>INNOVSTUDIO<small>ARCHITECTURE & DESIGN</small></span></a>
+<nav class="links"><a href="index.html#top">Accueil</a><a href="index.html#studio">Studio</a><a href="index.html#projects">Projets</a><a href="index.html#services">Services</a><a href="#contact">Contact</a></nav>
+<button class="btn btn-outline quote">Demander un devis →</button>
+<button class="menu" id="menu"><span></span><span></span><span></span></button>
+</div>
+<div class="mobile" id="mobile"><a href="index.html#top">Accueil</a><a href="index.html#studio">Studio</a><a href="index.html#projects">Projets</a><a href="index.html#services">Services</a><a href="#contact">Contact</a></div>
+</header>
+<main id="top">
+<section class="hero" style="background-image:linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.76) 50%,rgba(0,0,0,.3)),url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1800&auto=format&fit=crop')"><div class="wrap content"><a class="btn btn-outline" href="index.html#projects" style="margin-bottom:35px">← Retour aux projets</a><div class="eyebrow">Loft · 11e arrondissement, Paris</div><h1 class="word">Atelier Seine</h1><p class="tag">Un ancien atelier transformé en espace de vie chaleureux.</p><div class="meta"><div><span>Type</span><strong>Loft mixte</strong></div><div><span>Lieu</span><strong>Paris 11e</strong></div><div><span>Année</span><strong>2024</strong></div><div><span>Surface</span><strong>240 m²</strong></div></div></div></section>
+<section class="light"><div class="wrap grid2"><div><div class="eyebrow">Concept</div><h2>Une architecture pensée comme une expérience</h2><p>Chaque ligne, chaque matière et chaque ouverture ont été travaillées pour créer un espace élégant, fluide et durable.</p><p>L’objectif était de créer un lieu sobre, chaleureux et intemporel.</p></div><img style="height:470px;width:100%;object-fit:cover" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop"></div></section>
+<section><div class="wrap"><div class="section-head"><div><div class="eyebrow">Galerie</div><h2>Détails du projet</h2></div><p>Un aperçu de l’ambiance, des volumes et des matières.</p></div><div class="gallery"><img class="big" src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1400&auto=format&fit=crop"><div><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=900&auto=format&fit=crop" style="margin-bottom:20px"><img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=900&auto=format&fit=crop"></div></div></div></section>
+</main>
+<footer class="contact" id="contact">
+<div class="wrap">
+<div><div class="eyebrow">Contact</div><h2>Parlons de votre futur projet</h2><p>Décrivez votre espace, votre vision et vos besoins. Notre équipe vous recontactera rapidement.</p><button class="btn btn-primary quote">Démarrer un projet →</button></div>
+<div class="footer-cols"><div><h4>Adresse</h4><p>14 Rue des Beaux-Arts<br>75006 Paris, France</p></div><div><h4>Contact</h4><p>hello@innovstudio.fr<br>+33 1 42 96 88 10</p></div><div><h4>Réseaux</h4><p>Instagram<br>LinkedIn<br>Pinterest</p></div></div>
+<div class="footer-bottom"><span>© 2026 Innovstudio. Tous droits réservés.</span><a href="#top">Retour en haut ↑</a></div>
+</div>
+</footer>
+<div class="modal" id="modal"><div class="box"><button class="close" id="close">×</button><div class="eyebrow">Démarrer un projet</div><h2>Parlez-nous de votre projet</h2><p>Remplissez ce formulaire. Notre équipe vous recontactera sous 48h.</p><form id="form"><div class="row"><div><label>Nom complet *</label><input required></div><div><label>Email *</label><input type="email" required></div></div><div class="row"><div><label>Téléphone *</label><input required></div><div><label>Type *</label><select required><option value="">Sélectionnez</option><option>Architecture</option><option>Design intérieur</option><option>Rénovation</option></select></div></div><div><label>Message *</label><textarea required></textarea></div><button class="btn btn-primary">Envoyer →</button></form></div></div>
+<script>
+const menu=document.getElementById('menu'), mobile=document.getElementById('mobile'), modal=document.getElementById('modal'), close=document.getElementById('close');
+if(menu)menu.onclick=()=>mobile.classList.toggle('open');
+document.querySelectorAll('.quote').forEach(b=>b.onclick=()=>modal.classList.add('open'));
+if(close)close.onclick=()=>modal.classList.remove('open');
+if(modal)modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
+const form=document.getElementById('form');
+if(form){
+form.onsubmit=e=>{
+e.preventDefault();
+
+Swal.fire({
+icon:'success',
+title:'Demande envoyée !',
+html:`
+<h3 style="color:#c9a24a;margin-bottom:10px;">Merci pour votre confiance</h3>
+<p style="font-size:16px;line-height:1.6;">
+Votre demande a été envoyée avec succès.<br><br>
+Notre équipe <b>Innovstudio</b> vous contactera dans les plus brefs délais.
+</p>
+`,
+confirmButtonText:'Fermer',
+confirmButtonColor:'#c9a24a',
+background:'#0b0b0b',
+color:'#ffffff',
+allowOutsideClick:false
+});
+
+modal.classList.remove('open');
+form.reset();
+}
+}
+</script>
+</body></html>
