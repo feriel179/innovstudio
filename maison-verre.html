@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Verre — Innovstudio Paris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--sky:#E8F2FB;--sky-deep:#D6E8F8;--white:#FFFFFF;--ink:#14202C;--ink-soft:#56697D;--orange:#E85D2C;--orange-deep:#C84A1E;--green:#2E9E5B;--footer-ink:#101A24;--footer-text:#C7D6E5;--radius:10px;--maxw:1280px;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--sky);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 48px;}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;color:var(--ink);line-height:1.05;}
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(232,242,251,0.88);backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,32,44,0.08);}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;}
+  .logo-mark{width:22px;height:22px;border-radius:50%;border:2px solid var(--orange);position:relative;flex-shrink:0;}
+  .logo-mark::after{content:'';position:absolute;top:50%;left:50%;width:1.5px;height:14px;background:var(--orange);transform:translate(-50%,-50%);}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:0.92rem;padding:13px 26px;border-radius:var(--radius);border:1.5px solid transparent;cursor:pointer;transition:transform .25s,background .25s,color .25s;white-space:nowrap;}
+  .btn-primary{background:var(--orange);color:#fff;}
+  .btn-primary:hover{background:var(--orange-deep);transform:translateY(-2px);}
+  .eyebrow{display:flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:0.14em;font-size:0.78rem;font-weight:600;color:var(--ink-soft);margin-bottom:18px;}
+  .eyebrow .oculus{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--orange);flex-shrink:0;}
+  .framed{position:relative;}
+  .corner{position:absolute;width:16px;height:16px;pointer-events:none;z-index:2;}
+  .corner::before,.corner::after{content:'';position:absolute;background:var(--orange);}
+  .corner::before{width:16px;height:1.5px;top:50%;left:0;transform:translateY(-50%);}
+  .corner::after{width:1.5px;height:16px;left:50%;top:0;transform:translateX(-50%);}
+  .corner.tl{top:14px;left:14px;}.corner.tr{top:14px;right:14px;}
+  .corner.bl{bottom:14px;left:14px;}.corner.br{bottom:14px;right:14px;}
+  .breadcrumb{padding:112px 0 0;}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:0.9rem;color:var(--ink-soft);transition:color .2s;}
+  .back-link:hover{color:var(--orange);}
+  .back-link svg{transition:transform .2s;}
+  .back-link:hover svg{transform:translateX(-4px);}
+  .project-hero{padding:32px 0 80px;}
+  .project-hero h1{font-size:clamp(2.4rem,6vw,5rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:20px;}
+  .project-hero .tagline{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.05rem,2vw,1.35rem);color:var(--ink-soft);max-width:640px;line-height:1.6;margin-bottom:40px;}
+  .meta-row{display:flex;gap:48px;flex-wrap:wrap;padding:28px 0;border-top:1px solid rgba(20,32,44,0.1);border-bottom:1px solid rgba(20,32,44,0.1);margin-bottom:56px;}
+  .meta-item{display:flex;flex-direction:column;gap:5px;}
+  .meta-item span:first-child{font-size:0.76rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-soft);}
+  .meta-item span:last-child{font-size:1rem;font-weight:600;color:var(--ink);}
+  .hero-img{border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(20,32,44,0.25);margin-bottom:80px;}
+  .hero-img img{width:100%;height:clamp(320px,52vw,580px);object-fit:cover;}
+  .content-grid{display:grid;grid-template-columns:1fr 0.42fr;gap:80px;margin-bottom:100px;align-items:start;}
+  .content-main h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;margin-bottom:20px;}
+  .content-main p{color:var(--ink-soft);font-size:1.02rem;line-height:1.75;margin-bottom:18px;}
+  .content-side{background:var(--white);border-radius:14px;padding:32px;box-shadow:0 8px 24px -8px rgba(20,32,44,0.1);}
+  .content-side h3{font-size:1rem;font-weight:600;margin-bottom:18px;}
+  .detail-list{display:flex;flex-direction:column;gap:14px;}
+  .detail-list li{display:flex;flex-direction:column;gap:3px;border-bottom:1px solid rgba(20,32,44,0.07);padding-bottom:12px;list-style:none;}
+  .detail-list li:last-child{border-bottom:none;padding-bottom:0;}
+  .detail-list .label{font-size:0.74rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-soft);}
+  .detail-list .value{font-size:0.95rem;font-weight:500;color:var(--ink);}
+  .gallery{margin-bottom:100px;}
+  .gallery h2{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:600;margin-bottom:36px;}
+  .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .gallery-grid .framed{border-radius:14px;overflow:hidden;}
+  .gallery-grid img{width:100%;height:clamp(220px,30vw,360px);object-fit:cover;transition:transform .6s;}
+  .gallery-grid .framed:hover img{transform:scale(1.04);}
+  .gallery-grid .framed:first-child{grid-column:1/-1;}
+  .gallery-grid .framed:first-child img{height:clamp(280px,40vw,480px);}
+  .project-cta{background:var(--footer-ink);border-radius:20px;padding:72px 64px;text-align:center;margin-bottom:100px;}
+  .project-cta h2{color:#fff;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;margin-bottom:16px;}
+  .project-cta p{color:var(--footer-text);font-size:1.02rem;max-width:460px;margin:0 auto 32px;line-height:1.6;}
+  footer{background:var(--footer-ink);color:var(--footer-text);padding:60px 0 0;}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:28px 0;font-size:0.84rem;color:rgba(199,214,229,0.55);border-top:1px solid rgba(199,214,229,0.1);flex-wrap:wrap;gap:12px;}
+  .footer-bottom a{color:rgba(199,214,229,0.75);font-weight:500;}
+  .footer-bottom a:hover{color:var(--orange);}
+  @media(max-width:860px){
+    .wrap,.nav-inner{padding-left:24px;padding-right:24px;}
+    .content-grid{grid-template-columns:1fr;gap:40px;}
+    .gallery-grid{grid-template-columns:1fr;}
+    .gallery-grid .framed:first-child{grid-column:auto;}
+    .project-cta{padding:48px 28px;}
+    .meta-row{gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark"></span>INNOVSTUDIO</a>
+    <a href="index.html#contact" class="btn btn-primary">Request a Quote</a>
+  </div>
+</header>
+
+<main>
+  <div class="breadcrumb wrap">
+    <a href="index.html" class="back-link"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Back to projects</a>
+  </div>
+
+  <section class="project-hero wrap">
+    <div class="eyebrow"><span class="oculus"></span> Private Residence &nbsp;·&nbsp; Neuilly-sur-Seine, Paris</div>
+    <h1>Maison Verre</h1>
+    <p class="tagline">A private residence that dissolves the boundary between interior rooms and the garden beyond, through a continuous wall of structural glass.</p>
+    <div class="meta-row">
+      <div class="meta-item"><span>Type</span><span>Private Villa</span></div>
+      <div class="meta-item"><span>Location</span><span>Neuilly-sur-Seine, Paris</span></div>
+      <div class="meta-item"><span>Year</span><span>2025</span></div>
+      <div class="meta-item"><span>Surface</span><span>620 m²</span></div>
+      <div class="meta-item"><span>Status</span><span>Completed</span></div>
+    </div>
+    <div class="hero-img framed">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+      <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1800&auto=format&fit=crop" alt="Maison Verre — main view">
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="content-grid">
+      <div class="content-main">
+        <h2>A house that disappears into its garden.</h2>
+        <p>The clients came to us with a single instruction: they wanted to feel as if they were living outside, even in January. The answer was a structural glass envelope — floor to ceiling, corner to corner — that makes the garden the primary room of the house in every season.</p>
+        <p>Technically, this required a slender steel post-and-beam system designed in close collaboration with our structural engineers. The glazing units are triple-laminated, with a cavity solar-control film that keeps the interior cool in summer without sacrificing the transparency the clients wanted.</p>
+        <p>Interiors are deliberately sparse: polished white concrete floors, built-in furniture in white-lacquered oak, and a single palette of off-white plaster. The garden — and the sky above it — provides all the colour and texture the house needs.</p>
+      </div>
+      <aside class="content-side">
+        <h3>Project Details</h3>
+        <ul class="detail-list">
+          <li><span class="label">Client</span><span class="value">Private couple</span></li>
+          <li><span class="label">Architect</span><span class="value">Innovstudio</span></li>
+          <li><span class="label">Structure</span><span class="value">Steel post-and-beam</span></li>
+          <li><span class="label">Materials</span><span class="value">Structural glass, concrete, white oak</span></li>
+          <li><span class="label">Budget</span><span class="value">1 200 000 – 1 800 000 €</span></li>
+          <li><span class="label">Duration</span><span class="value">30 months</span></li>
+        </ul>
+      </aside>
+    </div>
+
+    <div class="gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <div class="framed"><img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=1200&auto=format&fit=crop" alt="Maison Verre — interior"></div>
+        <div class="framed"><img src="https://images.unsplash.com/photo-1600047509358-9dc75507daeb?q=80&w=1200&auto=format&fit=crop" alt="Maison Verre — detail"></div>
+        <div class="framed"><img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1200&auto=format&fit=crop" alt="Maison Verre — exterior"></div>
+      </div>
+    </div>
+
+    <div class="project-cta">
+      <h2>Un projet similaire en tête ?</h2>
+      <p>Parlons de votre espace, votre terrain et vos ambitions — nous prendrons le relai.</p>
+      <a href="index.html#contact" class="btn btn-primary">Démarrer un projet</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Innovstudio. All rights reserved.</span>
+      <a href="index.html">← Retour à l'accueil</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
