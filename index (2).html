@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innovstudio — Architecture & Interior Design, Paris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky: #E8F2FB;
+    --sky-deep: #D6E8F8;
+    --white: #FFFFFF;
+    --ink: #14202C;
+    --ink-soft: #56697D;
+    --orange: #E85D2C;
+    --orange-deep: #C84A1E;
+    --footer-ink: #101A24;
+    --footer-text: #C7D6E5;
+    --radius: 10px;
+    --maxw: 1280px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation:none !important; transition:none !important; }
+  }
+
+  body{
+    background:var(--sky);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  img{ display:block; max-width:100%; }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 48px;
+  }
+
+  :focus-visible{
+    outline:2px solid var(--orange);
+    outline-offset:3px;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:0.92rem;
+    padding:13px 26px;
+    border-radius:var(--radius);
+    border:1.5px solid transparent;
+    cursor:pointer;
+    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--orange);
+    color:#fff;
+  }
+  .btn-primary:hover{
+    background:var(--orange-deep);
+    transform:translateY(-2px);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border-color:rgba(20,32,44,0.25);
+  }
+  .btn-ghost:hover{
+    border-color:var(--orange);
+    color:var(--orange-deep);
+  }
+  .btn-light{
+    background:transparent;
+    color:#fff;
+    border-color:rgba(255,255,255,0.4);
+  }
+  .btn-light:hover{
+    border-color:var(--orange);
+    background:var(--orange);
+  }
+
+  .text-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-weight:600;
+    font-size:0.95rem;
+    color:var(--ink);
+    border-bottom:1.5px solid transparent;
+    padding-bottom:2px;
+    transition:border-color .25s ease, color .25s ease, gap .25s ease;
+  }
+  .text-link svg{ transition:transform .25s ease; }
+  .text-link:hover{
+    color:var(--orange-deep);
+    border-color:var(--orange);
+  }
+  .text-link:hover svg{ transform:translateX(4px); }
+
+  /* ---------- Eyebrow + oculus mark ---------- */
+  .eyebrow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.78rem;
+    font-weight:600;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  .eyebrow .oculus{
+    width:9px; height:9px;
+    border-radius:50%;
+    border:1.5px solid var(--orange);
+    flex-shrink:0;
+  }
+
+  h1, h2, h3{
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--ink);
+    line-height:1.05;
+  }
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(232,242,251,0.82);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(20,32,44,0.08);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:18px 48px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+    letter-spacing:0.01em;
+  }
+  .logo-mark{
+    width:22px; height:22px;
+    border-radius:50%;
+    border:2px solid var(--orange);
+    position:relative;
+    flex-shrink:0;
+  }
+  .logo-mark::after{
+    content:'';
+    position:absolute;
+    top:50%; left:50%;
+    width:1.5px; height:14px;
+    background:var(--orange);
+    transform:translate(-50%,-50%);
+  }
+  .nav-links{
+    display:flex;
+    gap:40px;
+    font-weight:500;
+    font-size:0.95rem;
+  }
+  .nav-links a{
+    position:relative;
+    color:var(--ink-soft);
+    transition:color .2s ease;
+  }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:-6px;
+    width:0; height:1.5px;
+    background:var(--orange);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+
+  .nav-cta{ display:flex; align-items:center; gap:18px; }
+  .burger{
+    display:none;
+    width:36px; height:36px;
+    background:none; border:none;
+    cursor:pointer;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+  }
+  .burger span{
+    display:block; width:100%; height:1.5px;
+    background:var(--ink);
+  }
+  .mobile-menu{
+    display:none;
+    flex-direction:column;
+    gap:0;
+    background:var(--sky);
+    border-top:1px solid rgba(20,32,44,0.08);
+  }
+  .mobile-menu a{
+    padding:16px 48px;
+    border-bottom:1px solid rgba(20,32,44,0.06);
+    font-weight:500;
+  }
+  .mobile-menu.open{ display:flex; }
+
+  /* ---------- Corner-tick frame (signature motif) ---------- */
+  .framed{ position:relative; }
+  .corner{ position:absolute; width:16px; height:16px; pointer-events:none; z-index:2; }
+  .corner::before, .corner::after{ content:''; position:absolute; background:var(--orange); }
+  .corner::before{ width:16px; height:1.5px; top:50%; left:0; transform:translateY(-50%); }
+  .corner::after{ width:1.5px; height:16px; left:50%; top:0; transform:translateX(-50%); }
+  .corner.tl{ top:14px; left:14px; }
+  .corner.tr{ top:14px; right:14px; }
+  .corner.bl{ bottom:14px; left:14px; }
+  .corner.br{ bottom:14px; right:14px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:168px 0 96px;
+  }
+  .hero-eyebrow{ justify-content:flex-start; }
+  h1.wordmark{
+    font-size:clamp(3.2rem, 11vw, 8.4rem);
+    font-weight:700;
+    letter-spacing:-0.02em;
+    margin-bottom:28px;
+  }
+  .hero-tagline{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:500;
+    font-size:clamp(1.3rem, 2.6vw, 1.85rem);
+    color:var(--ink);
+    max-width:680px;
+    margin-bottom:16px;
+  }
+  .hero-sub{
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    max-width:520px;
+    margin-bottom:40px;
+    line-height:1.6;
+  }
+  .hero-actions{
+    display:flex;
+    align-items:center;
+    gap:32px;
+    flex-wrap:wrap;
+    margin-bottom:64px;
+  }
+  .hero-media{
+    border-radius:18px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 30px 60px -20px rgba(20,32,44,0.25);
+  }
+  .hero-media img{
+    width:100%;
+    height:clamp(340px, 58vw, 620px);
+    object-fit:cover;
+  }
+  .hero-caption{
+    position:absolute;
+    bottom:24px; left:24px;
+    background:rgba(20,32,44,0.55);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    color:#fff;
+    padding:13px 20px;
+    border-radius:8px;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
+
+  /* ---------- Section shared ---------- */
+  section{ padding:120px 0; }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    margin-bottom:64px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-size:clamp(2.1rem, 4vw, 3rem);
+    font-weight:600;
+  }
+  .section-head p{
+    color:var(--ink-soft);
+    max-width:360px;
+    font-size:1rem;
+    line-height:1.6;
+  }
+
+  /* ---------- Studio / About ---------- */
+  .studio-about{ background:var(--sky-deep); padding:110px 0; }
+  .studio-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1fr;
+    gap:72px;
+    align-items:center;
+  }
+  .studio-media{
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 24px 50px -18px rgba(20,32,44,0.22);
+  }
+  .studio-media img{
+    width:100%;
+    height:clamp(320px, 38vw, 460px);
+    object-fit:cover;
+  }
+  .studio-copy h2{
+    font-size:clamp(1.9rem, 3.4vw, 2.6rem);
+    font-weight:600;
+    margin-bottom:22px;
+  }
+  .studio-copy p{
+    color:var(--ink-soft);
+    font-size:1.02rem;
+    line-height:1.7;
+    margin-bottom:18px;
+    max-width:480px;
+  }
+  .stat-row{
+    display:flex;
+    gap:40px;
+    margin-top:36px;
+    padding-top:32px;
+    border-top:1px solid rgba(20,32,44,0.12);
+  }
+  .stat{ display:flex; flex-direction:column; gap:6px; }
+  .stat strong{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:2.1rem;
+    font-weight:700;
+    color:var(--orange-deep);
+    line-height:1;
+  }
+  .stat span{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+
+  /* ---------- Projects ---------- */
+  .projects{ background:var(--white); }
+  .project-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:36px;
+  }
+  .project-card{ display:block; }
+  .project-card .framed{
+    border-radius:14px;
+    overflow:hidden;
+    aspect-ratio:4/5;
+    background:var(--sky-deep);
+  }
+  .project-card img{
+    width:100%; height:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .project-card:hover img{ transform:scale(1.06); }
+  .project-card .corner{ opacity:0; transition:opacity .35s ease; }
+  .project-card:hover .corner{ opacity:1; }
+  .project-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-top:22px;
+  }
+  .project-meta h3{
+    font-size:1.3rem;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .project-meta .detail{
+    color:var(--ink-soft);
+    font-size:0.88rem;
+  }
+  .project-desc{
+    margin-top:12px;
+    color:var(--ink-soft);
+    font-size:0.93rem;
+    line-height:1.55;
+  }
+  .project-arrow{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1.5px solid rgba(20,32,44,0.18);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    transition:background .3s ease, border-color .3s ease, transform .3s ease;
+  }
+  .project-card:hover .project-arrow{
+    background:var(--orange);
+    border-color:var(--orange);
+    transform:rotate(45deg);
+  }
+  .project-arrow svg path{ stroke:var(--ink); transition:stroke .3s ease; }
+  .project-card:hover .project-arrow svg path{ stroke:#fff; }
+
+  /* ---------- Services ---------- */
+  .services{ background:var(--sky); }
+  .services-top{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    margin-bottom:72px;
+    align-items:end;
+  }
+  .services-top h2{
+    font-size:clamp(2.1rem, 4vw, 3rem);
+    font-weight:600;
+  }
+  .services-top p{
+    color:var(--ink-soft);
+    font-size:1.05rem;
+    line-height:1.7;
+  }
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:rgba(20,32,44,0.12);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .service-item{
+    background:var(--white);
+    padding:44px;
+  }
+  .service-tick{
+    width:30px; height:3px;
+    background:var(--orange);
+    margin-bottom:24px;
+  }
+  .service-item h3{
+    font-size:1.4rem;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .service-item p{
+    color:var(--ink-soft);
+    font-size:0.96rem;
+    line-height:1.65;
+    max-width:380px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer.contact{
+    background:var(--footer-ink);
+    color:var(--footer-text);
+    padding:120px 0 0;
+  }
+  .footer-top{
+    text-align:left;
+    margin-bottom:80px;
+  }
+  .footer-top .eyebrow{ color:rgba(199,214,229,0.65); }
+  .footer-top h2{
+    color:#fff;
+    font-size:clamp(2.2rem, 5vw, 4rem);
+    font-weight:600;
+    max-width:760px;
+    margin-bottom:20px;
+  }
+  .footer-top p{
+    color:var(--footer-text);
+    font-size:1.05rem;
+    max-width:460px;
+    margin-bottom:36px;
+  }
+  .footer-cols{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:40px;
+    padding-bottom:64px;
+    border-bottom:1px solid rgba(199,214,229,0.15);
+  }
+  .footer-col h4{
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-size:0.76rem;
+    font-weight:600;
+    color:rgba(199,214,229,0.55);
+    margin-bottom:18px;
+  }
+  .footer-col a, .footer-col p{
+    display:block;
+    font-size:0.98rem;
+    color:#fff;
+    margin-bottom:10px;
+    font-weight:500;
+  }
+  .footer-col a{ transition:color .25s ease; }
+  .footer-col a:hover{ color:var(--orange); }
+
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 0;
+    font-size:0.84rem;
+    color:rgba(199,214,229,0.55);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .footer-bottom a{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:rgba(199,214,229,0.75);
+    font-weight:500;
+  }
+  .footer-bottom a:hover{ color:var(--orange); }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------- Project request modal ---------- */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    background:rgba(15,26,36,0.55);
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .3s ease;
+  }
+  .modal-overlay.open{
+    opacity:1;
+    visibility:visible;
+  }
+  .modal{
+    background:var(--white);
+    width:100%;
+    max-width:640px;
+    max-height:88vh;
+    overflow-y:auto;
+    border-radius:16px;
+    padding:48px;
+    position:relative;
+    box-shadow:0 40px 80px -20px rgba(15,26,36,0.45);
+    transform:translateY(18px) scale(0.98);
+    transition:transform .35s ease;
+  }
+  .modal-overlay.open .modal{
+    transform:translateY(0) scale(1);
+  }
+  .modal-close{
+    position:absolute;
+    top:20px; right:20px;
+    width:36px; height:36px;
+    border-radius:50%;
+    border:1.5px solid rgba(20,32,44,0.15);
+    background:transparent;
+    font-size:1.2rem;
+    line-height:1;
+    color:var(--ink);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:border-color .25s ease, color .25s ease, background .25s ease;
+  }
+  .modal-close:hover{
+    border-color:var(--orange);
+    color:#fff;
+    background:var(--orange);
+  }
+  .modal-head{ margin-bottom:32px; padding-right:30px; }
+  .modal-head h3{
+    font-size:clamp(1.5rem, 3vw, 1.9rem);
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .modal-head p{
+    color:var(--ink-soft);
+    font-size:0.96rem;
+    line-height:1.6;
+  }
+
+  .project-form{ display:flex; flex-direction:column; gap:20px; }
+  .form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  .form-group{ display:flex; flex-direction:column; gap:8px; }
+  .form-group.full{ width:100%; }
+  .form-group label{
+    font-size:0.8rem;
+    font-weight:600;
+    color:var(--ink);
+    letter-spacing:0.01em;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea{
+    font-family:'Inter', sans-serif;
+    font-size:0.95rem;
+    color:var(--ink);
+    background:var(--sky);
+    border:1.5px solid rgba(20,32,44,0.12);
+    border-radius:8px;
+    padding:12px 14px;
+    transition:border-color .2s ease, background .2s ease;
+    width:100%;
+  }
+  .form-group textarea{ resize:vertical; min-height:96px; font-family:'Inter', sans-serif; }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus{
+    outline:none;
+    border-color:var(--orange);
+    background:var(--white);
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder{ color:rgba(20,32,44,0.4); }
+  .form-group select{ cursor:pointer; }
+
+  .form-submit{
+    margin-top:8px;
+    width:100%;
+    justify-content:center;
+    padding:15px 26px;
+  }
+  .form-note{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    text-align:center;
+    margin-top:-6px;
+  }
+
+  .form-success{
+    text-align:center;
+    padding:24px 0 8px;
+  }
+  .success-icon{
+    width:56px; height:56px;
+    border-radius:50%;
+    background:var(--orange);
+    color:#fff;
+    font-size:1.6rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 22px;
+  }
+  .form-success h3{
+    font-size:1.5rem;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .form-success p{
+    color:var(--ink-soft);
+    font-size:0.96rem;
+    line-height:1.6;
+    max-width:420px;
+    margin:0 auto 28px;
+  }
+
+  @media (max-width: 600px){
+    .modal{ padding:32px 24px; border-radius:14px; }
+    .form-row{ grid-template-columns:1fr; gap:18px; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px){
+    .wrap, .nav-inner{ padding-left:28px; padding-right:28px; }
+    .studio-grid{ grid-template-columns:1fr; gap:40px; }
+    .project-grid{ grid-template-columns:repeat(2, 1fr); }
+    .services-top{ grid-template-columns:1fr; gap:24px; }
+    .service-grid{ grid-template-columns:1fr; }
+    .footer-cols{ grid-template-columns:repeat(2, 1fr); gap:32px; }
+  }
+
+  @media (max-width: 760px){
+    .nav-links{ display:none; }
+    .nav-cta .btn-ghost{ display:none; }
+    .burger{ display:flex; }
+    .hero{ padding:148px 0 64px; }
+    section{ padding:80px 0; }
+    .project-grid{ grid-template-columns:1fr; }
+    .section-head{ margin-bottom:40px; }
+    .footer-cols{ grid-template-columns:1fr; }
+    .footer-top{ margin-bottom:56px; }
+    .stat-row{ flex-wrap:wrap; gap:28px; }
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark"></span>
+      INNOVSTUDIO
+    </a>
+    <nav class="nav-links">
+      <a href="#studio">Studio</a>
+      <a href="#projects">Projects</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost" style="display:none" id="deskGhost">Studio</a>
+      <a href="#contact" class="btn btn-primary">Request a Quote</a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#studio">Studio</a>
+    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap">
+    <div class="eyebrow hero-eyebrow">
+      <span class="oculus"></span>
+      Paris &nbsp;·&nbsp; Architecture &amp; Interior Design Studio
+    </div>
+
+    <h1 class="wordmark">INNOVSTUDIO</h1>
+
+    <p class="hero-tagline">Redefining Spaces, Elevating Lifestyles.</p>
+    <p class="hero-sub">We design residences, workplaces, and cultural spaces across Paris and beyond — where structure meets soul, and every detail earns its place.</p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Request a Quote</a>
+      <a href="#projects" class="text-link">
+        See our projects
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-media framed reveal">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1800&auto=format&fit=crop" alt="Modern minimalist building with clean white lines, designed by Innovstudio">
+      <div class="hero-caption">Minimal — Modern — Meaningful</div>
+    </div>
+  </section>
+
+  <section class="studio-about" id="studio">
+    <div class="wrap studio-grid">
+      <div class="studio-media framed reveal">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Architecture studio desk with drawings, models, and plans in progress">
+      </div>
+      <div class="studio-copy reveal">
+        <div class="eyebrow"><span class="oculus"></span> About The Studio</div>
+        <h2>A Paris practice built around light, material, and restraint.</h2>
+        <p>Innovstudio was founded in Paris on a simple belief: that a building should feel inevitable, as if no other shape could have worked as well. We work across architecture and interiors as one continuous discipline, carrying a single idea from the first sketch through to the last door handle.</p>
+        <p>Every project starts with the site, the light, and the people who will actually live in the space — not with a style we're trying to repeat.</p>
+        <div class="stat-row">
+          <div class="stat">
+            <strong>12+</strong>
+            <span>Years in practice</span>
+          </div>
+          <div class="stat">
+            <strong>60+</strong>
+            <span>Projects completed</span>
+          </div>
+          <div class="stat">
+            <strong>4</strong>
+            <span>Disciplines, one team</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow"><span class="oculus"></span> Selected Works</div>
+          <h2>Featured Projects</h2>
+        </div>
+        <p>A small selection of recently completed residences and interiors, each shaped around how its occupants actually live.</p>
+      </div>
+
+      <div class="project-grid">
+
+        <a href="#" class="project-card reveal">
+          <div class="framed">
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <span class="corner bl"></span><span class="corner br"></span>
+            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1200&auto=format&fit=crop" alt="Villa Lumière, a modern residence with large glass facades and an open staircase">
+          </div>
+          <div class="project-meta">
+            <div>
+              <h3>Villa Lumière</h3>
+              <div class="detail">Residential · Saint-Germain, Paris · 2025</div>
+            </div>
+            <div class="project-arrow">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <p class="project-desc">A glass-walled family home built around a sculptural staircase and a private courtyard of light.</p>
+        </a>
+
+        <a href="#" class="project-card reveal">
+          <div class="framed">
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <span class="corner bl"></span><span class="corner br"></span>
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200&auto=format&fit=crop" alt="Atelier Seine, a modern mixed-use loft with warm dusk lighting and a reflecting pool">
+          </div>
+          <div class="project-meta">
+            <div>
+              <h3>Atelier Seine</h3>
+              <div class="detail">Mixed-Use Loft · 11th Arrondissement · 2024</div>
+            </div>
+            <div class="project-arrow">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <p class="project-desc">A converted warehouse loft balancing exposed structure with warm, livable interiors.</p>
+        </a>
+
+        <a href="#" class="project-card reveal">
+          <div class="framed">
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <span class="corner bl"></span><span class="corner br"></span>
+            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop" alt="Maison Verre, a private residence with floor-to-ceiling glass walls">
+          </div>
+          <div class="project-meta">
+            <div>
+              <h3>Maison Verre</h3>
+              <div class="detail">Private Residence · Neuilly-sur-Seine · 2025</div>
+            </div>
+            <div class="project-arrow">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <p class="project-desc">A private residence that dissolves the line between interior rooms and the garden beyond.</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="services-top reveal">
+        <div>
+          <div class="eyebrow"><span class="oculus"></span> What We Do</div>
+          <h2>Services</h2>
+        </div>
+        <p>From the first sketch to the final handover, our studio works across architecture and interiors as one continuous discipline — not separate handoffs.</p>
+      </div>
+
+      <div class="service-grid reveal">
+        <div class="service-item">
+          <div class="service-tick"></div>
+          <h3>Architecture</h3>
+          <p>From first sketch to final structure, we design buildings that hold their shape and their meaning.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-tick"></div>
+          <h3>Interior Design</h3>
+          <p>Spaces tailored to how you actually live, balancing material, light, and proportion in equal measure.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-tick"></div>
+          <h3>Renovation &amp; Restoration</h3>
+          <p>Reworking existing structures with respect for what came before, and a clear eye on what's possible next.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-tick"></div>
+          <h3>Project Management</h3>
+          <p>One studio, one team, end-to-end — coordinating every detail from permit drawings to final handover.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <div class="footer-top reveal">
+      <div class="eyebrow"><span class="oculus"></span> Get In Touch</div>
+      <h2>Let's build something meaningful.</h2>
+      <p>Tell us about your space, your site, and your ambitions — we'll take it from there.</p>
+      <button type="button" id="startProjectBtn" class="btn btn-primary">Start a Project</button>
+    </div>
+
+    <div class="footer-cols reveal">
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <p>14 Rue des Beaux-Arts<br>75006 Paris, France</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@innovstudio.fr">hello@innovstudio.fr</a>
+        <a href="tel:+33142968810">+33 1 42 96 88 10</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Pinterest</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Innovstudio. All rights reserved.</span>
+      <a href="#top">
+        Back to top
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 13V3M8 3L4 7M8 3L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="projectModalOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalCloseBtn" aria-label="Fermer le formulaire" type="button">&times;</button>
+
+    <div id="modalFormView">
+      <div class="modal-head">
+        <div class="eyebrow"><span class="oculus"></span> Démarrer Un Projet</div>
+        <h3 id="modalTitle">Parlez-nous de votre projet</h3>
+        <p>Remplissez ce formulaire avec les informations clés de votre projet — notre équipe vous recontactera sous 48h.</p>
+      </div>
+
+      <form id="projectForm" class="project-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Nom complet *</label>
+            <input type="text" id="fullName" name="fullName" required placeholder="Jean Dupont" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Adresse e-mail *</label>
+            <input type="email" id="email" name="email" required placeholder="jean@email.com" autocomplete="email">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Téléphone *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+33 6 12 34 56 78" autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label for="projectType">Type de projet *</label>
+            <select id="projectType" name="projectType" required>
+              <option value="" disabled selected>Sélectionnez une option</option>
+              <option>Architecture</option>
+              <option>Design d'intérieur</option>
+              <option>Rénovation &amp; Restauration</option>
+              <option>Gestion de projet</option>
+              <option>Autre</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="location">Localisation du projet *</label>
+            <input type="text" id="location" name="location" required placeholder="Ville, pays">
+          </div>
+          <div class="form-group">
+            <label for="surface">Surface approximative (m²)</label>
+            <input type="number" id="surface" name="surface" min="0" placeholder="120">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="budget">Budget estimé *</label>
+            <select id="budget" name="budget" required>
+              <option value="" disabled selected>Sélectionnez une fourchette</option>
+              <option>Moins de 50 000 €</option>
+              <option>50 000 € – 150 000 €</option>
+              <option>150 000 € – 400 000 €</option>
+              <option>400 000 € – 1 000 000 €</option>
+              <option>Plus de 1 000 000 €</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="startDate">Date de démarrage souhaitée</label>
+            <input type="date" id="startDate" name="startDate">
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label for="message">Décrivez votre projet *</label>
+          <textarea id="message" name="message" rows="4" required placeholder="Parlez-nous de votre vision, vos contraintes, votre style de vie..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit">Envoyer ma demande</button>
+        <p class="form-note">* Champs obligatoires</p>
+      </form>
+    </div>
+
+    <div class="form-success" id="formSuccess" hidden>
+      <div class="success-icon">&#10003;</div>
+      <h3>Merci !</h3>
+      <p>Votre demande a bien été envoyée. Notre équipe l'examine et vous recontactera dans les 48 heures.</p>
+      <button class="btn btn-ghost" id="closeSuccessBtn" type="button">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mobile menu toggle
+  const burger = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Scroll reveal
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // Project request modal
+  const overlay = document.getElementById('projectModalOverlay');
+  const openBtn = document.getElementById('startProjectBtn');
+  const closeBtn = document.getElementById('modalCloseBtn');
+  const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+  const form = document.getElementById('projectForm');
+  const formView = document.getElementById('modalFormView');
+  const successView = document.getElementById('formSuccess');
+  let lastFocused = null;
+
+  function openModal(){
+    lastFocused = document.activeElement;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const firstField = document.getElementById('fullName');
+    if (firstField) setTimeout(() => firstField.focus(), 150);
+  }
+
+  function closeModal(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  if (openBtn) openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  closeSuccessBtn.addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    // Fermer la modale d'abord
+    closeModal();
+    form.reset();
+
+    // SweetAlert2
+    Swal.fire({
+      title: "Projet créé !",
+      text: "Votre demande a bien été envoyée. Notre équipe vous recontactera sous 48h.",
+      icon: "success",
+      draggable: true,
+      confirmButtonText: "OK",
+      confirmButtonColor: "#E85D2C",
+      background: "#FFFFFF",
+      color: "#14202C",
+      borderRadius: "16px",
+    });
+  });
+
+  // Reset to the form view next time the modal opens, after a successful submission
+  function resetModalView(){
+    formView.hidden = false;
+    successView.hidden = true;
+  }
+  overlay.addEventListener('transitionend', (e) => {
+    if (e.target === overlay && !overlay.classList.contains('open')) {
+      resetModalView();
+    }
+  });
+</script>
+
+</body>
+</html>
